@@ -151,15 +151,15 @@ ScreenManager:
 					        on_release:
 					        	displaybox2.text="Options response:\\n"+app.menu.get(textbox2.text)
 								displaybox2.cursor = 0,0
-
-				    MDFloatingActionButton:
-				        text: 'CLEAR'
-				        icon: 'delete-forever'
-				        color: 1,.1,.1,1
-				        pos_hint: {"right":1,"y":0}
-				        on_release:
-				        	textbox2.text=""
-				        	displaybox2.text="$"
+					FloatLayout:
+						MDFloatingActionButton:
+							text: 'CLEAR'
+							icon: 'delete-forever'
+							color: 1,.1,.1,1
+							pos_hint: {"right":.98,"y":.1}
+							on_release:
+								textbox2.text=""
+								displaybox2.text="$"
 
         MDBottomNavigationItem:
             name: 'screen 3'
@@ -195,6 +195,14 @@ ScreenManager:
     					line_color_normal: 0,0,0,1
 					FloatLayout:
 						MDFloatingActionButton:
+							icon: "delete-forever"
+							elevation_normal: 8
+							pos_hint: {"x":.02, "y":.1}
+							on_release:
+								displaybox3.text = "$"
+								textbox3.text= ""
+
+						MDFloatingActionButton:
 							icon: "play"
 							color:0,1,0,.5
 							elevation_normal: 8
@@ -202,13 +210,6 @@ ScreenManager:
 							on_release:
 								displaybox3.text = ""
 								displaybox3.text="$ Ports:"+app.menu.scan(root.ids.textbox.text)
-						MDFloatingActionButton:
-							icon: "delete-forever"
-							elevation_normal: 8
-							pos_hint: {"x":.02, "y":.1}
-							on_release:
-								displaybox3.text = "$"
-								textbox3.text= ""
 					
 '''
 class MenuScreen(Screen):
