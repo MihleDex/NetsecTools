@@ -4,7 +4,7 @@ The code will be available in the repository above along with the apk.
 To compile it yourself read https://kivy.org/doc/stable/guide/packaging-android.html
 To learn about kivymd goto:https://kivymd.readthedocs.io/en/latest/
 ## Requirements:
-Kivy
+Kivy,
 Kivymd
 
 <img src="/img/Screenshot_20201230-104031_Pydroid_3 (1).png" width="400" height="800">
