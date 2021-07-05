@@ -5,9 +5,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivymd.theming import ThemeManager
 import subprocess
 import requests
+import myport
 from kivy.core.window import Window
-from queue import Queue
-import threading
 Window.softinput_mode = "below_target"
 
 KV = '''
@@ -201,8 +200,8 @@ ScreenManager:
 							elevation_normal: 8
 							pos_hint: {"right":.98, "y":.1}
 							on_release:
-								displaybox.text = ""
-								displaybox.text="$ "+app.menu.scan(root.ids.textbox.text)
+								displaybox3.text = ""
+								displaybox3.text="$ Ports:"+app.menu.scan(root.ids.textbox.text)
 						MDFloatingActionButton:
 							icon: "delete-forever"
 							elevation_normal: 8
@@ -213,6 +212,12 @@ ScreenManager:
 					
 '''
 class MenuScreen(Screen):
+
+	def scan(self,url):
+		sc = myport.Scanner(url,1,1024,3)
+		sc.scan()
+		return str(sc.open_ports)
+
 	def ping(self,host):
 		host = host.replace('https//:','')
 		host = host.replace('http//:','')
@@ -314,5 +319,5 @@ class MainApp(MDApp):
 
     menu = MenuScreen()
     
-
-MainApp().run()
+if __name__ == "__main__":
+	MainApp().run()
